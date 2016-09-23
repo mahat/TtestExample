@@ -8,12 +8,17 @@ USAMpg = data['USA'].values
 JapanMpg = data['Japan']
 JapanMpg = JapanMpg[JapanMpg != -999].values
 
-#print(USAMpg.mean())
-#print(JapanMpg.mean())
+
+print'USA data length %d' % len(USAMpg)
+print'Japan data length %d' % len(JapanMpg)
+
+print'USA data mean %f' % USAMpg.mean()
+print'Japan data mean %f' % JapanMpg.mean()
+
 
 # plot the data
-plotData = True
-if plotData:
+showPlots = True
+if showPlots:
     fig = plt.figure('T-Test')
     fig.suptitle("Box Plots", fontsize=16)
     ax = plt.subplot("121")
@@ -30,6 +35,7 @@ if plotData:
 # Significance Level = 0.05
 significance = 0.05
 t, p = ttest_ind(USAMpg, JapanMpg, equal_var=False)
+print("First hypothesis: MPG means of USA and Japan are equal")
 print("t-value = %g  p-value = %g  alpha = %g" % (t, p, significance))
 
 # H1_1: two means are not equal
@@ -38,7 +44,7 @@ if p < significance:
 else:
     print ('For H1: Null hypothesis cannot be rejected!')
 
-
+print(' ------------- ')
 '''
 Taken from: http://stackoverflow.com/questions/15984221/how-to-perform-two-sample-one-tailed-t-test-with-numpy-scipy
 
@@ -51,13 +57,16 @@ Another good soruce: http://stattrek.com/hypothesis-test/difference-in-means.asp
 
 # One Tailed Hypothesis
 # H2_0(null hypothesis): USA's mean is greater or equal than Japan's
+# data points are inverted in order to make T value > 0
 t, p = ttest_ind(JapanMpg, USAMpg, equal_var=False)
+print("Second null hypothesis: USA's mean is greater or equal than Japan's")
 print("t-value = %g  p-value = %g  alpha = %g" % (t, p, significance))
 p_one_tailed = p/2
 
-# H2_0: Japan's mean is greater than USA's
+# H2_1: Japan's mean is greater than USA's
 if (p/2) < significance:
     print ('For H_3: It is unlikely to except null hypothesis!')
 else:
     print ('For H_3: Null hypothesis cannot be rejected!')
 
+print(' ------------- ')
