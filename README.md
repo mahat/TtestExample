@@ -10,4 +10,5 @@ MPG of Japan's drivers and USA's drivers. There are 79 sample from Japan, 250 sa
 - A sample problem
 
 # Usage
-You can run program with TtestExample.py. Due to matplotlib, running can be suspended. You can change showPlots to False.
+- You can run program with TtestExample.py. Due to matplotlib, running can be suspended. You can change showPlots to False.
+- Pandas, Scipy, Matplotlib and Numpy packages are required in order to run program
